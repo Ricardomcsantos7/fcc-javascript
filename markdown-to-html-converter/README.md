@@ -18,7 +18,7 @@ No setup or installation is required — everything runs in the browser.
 
 ## Supported Markdown Syntax
 
-### <Headings>
+### Headings
 
 ```md
 # Heading 1
@@ -26,29 +26,29 @@ No setup or installation is required — everything runs in the browser.
 ### Heading 3
 ```
 
-### <Bold Text>
+### Bold Text
 ```md
 **bold text**
 **bold text**
 ```
 
-### <Italic Text>
+### Italic Text
 ```md
 _italic text_
 _italic text_
 ```
 
-### <Links>
+### Links
 ```md
 [link text](https://example.com)
 ```
 
-### <Images>
+### Images
 ```md
 ![alt text](image-source)
 ```
 
-### <Blockquotes>
+### Blockquotes
 ```md
 > This is a quote
 ```
