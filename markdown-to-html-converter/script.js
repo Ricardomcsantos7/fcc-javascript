@@ -18,6 +18,18 @@ function convertMarkdown() {
   markdown = markdown.replace(/\*(.+?)\*/g, "<em>$1</em>");
   markdown = markdown.replace(/_(.+?)_/g, "<em>$1</em>");
 
+  // Images
+  markdown = markdown.replace(
+    /!\[(.*?)\]\((.*?)\)/g,
+    '<img alt="$1" src="$2">',
+  );
+
+  // Links
+  markdown = markdown.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
+
+  // Blockquotes
+  markdown = markdown.replace(/^>\s?(.*)$/gm, "<blockquote>$1</blockquote>");
+
   return markdown;
 }
 
