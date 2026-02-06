@@ -26,9 +26,6 @@ function convertMarkdown() {
   // Blockquotes
   markdown = markdown.replace(/^>\s?(.*)$/gm, "<blockquote>$1</blockquote>");
 
-  // Line breaks
-  markdown = markdown.replace(/\n/g, "<br>");
-
   return markdown;
 }
 
@@ -39,5 +36,6 @@ markdownInput.addEventListener("input", () => {
   const html = convertMarkdown();
 
   document.getElementById("html-output").textContent = html;
-  document.getElementById("preview").innerHTML = html;
+
+  document.getElementById("preview").innerHTML = html.replace(/\n/g, "<br>");
 });

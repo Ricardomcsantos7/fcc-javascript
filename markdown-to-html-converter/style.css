@@ -46,7 +46,7 @@ textarea {
 
 #html-output,
 #preview {
-  height: 100px;
+  height: 200px;
   display: inline-block;
   width: 100%;
   border: 1px solid #ccc;
@@ -61,6 +61,7 @@ textarea {
   border-radius: 6px;
   overflow-x: auto;
   font-size: 0.9rem;
+  max-width: 600px;
 }
 
 #preview {
@@ -68,6 +69,15 @@ textarea {
   padding: 1.5rem;
   border-radius: 6px;
   border: 1px solid #ddd;
+  overflow-wrap: break-word;
+  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+#preview * {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 img {
