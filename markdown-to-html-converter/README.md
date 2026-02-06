@@ -22,33 +22,40 @@ No setup or installation is required — everything runs in the browser.
 
 ```md
 # Heading 1
+
 ## Heading 2
+
 ### Heading 3
 ```
 
 ### Bold Text
+
 ```md
 **bold text**
 **bold text**
 ```
 
 ### Italic Text
+
 ```md
 _italic text_
 _italic text_
 ```
 
 ### Links
+
 ```md
 [link text](https://example.com)
 ```
 
 ### Images
+
 ```md
 ![alt text](image-source)
 ```
 
 ### Blockquotes
+
 ```md
 > This is a quote
 ```
@@ -57,8 +64,8 @@ _italic text_
 
 ## 🛠️ Technologies Used
 
-- HTML
-- CSS (provided by freeCodeCamp)
+- HTML (provided by freeCodeCamp)
+- CSS (initially provided by freeCodeCamp, improved later for readability and cleaner layout)
 - JavaScript (Vanilla)
 
 ---
