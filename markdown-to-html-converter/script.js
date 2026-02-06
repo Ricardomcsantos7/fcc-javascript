@@ -1,20 +1,16 @@
-/* function convertMarkdown() {
-  return "";
-}
- */
 function convertMarkdown() {
-  let markdown = document.getElementById("markdown-input").value;
+  let markdown = document.getElementById("markdown-input").value.trim();
 
   // Headings
   markdown = markdown.replace(/^### (.*)$/gm, "<h3>$1</h3>");
   markdown = markdown.replace(/^## (.*)$/gm, "<h2>$1</h2>");
   markdown = markdown.replace(/^# (.*)$/gm, "<h1>$1</h1>");
 
-  // Bold (**text** or __text__)
+  // Bold
   markdown = markdown.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   markdown = markdown.replace(/__(.+?)__/g, "<strong>$1</strong>");
 
-  // Italic (*text* or _text_)
+  // Italic
   markdown = markdown.replace(/\*(.+?)\*/g, "<em>$1</em>");
   markdown = markdown.replace(/_(.+?)_/g, "<em>$1</em>");
 
@@ -29,6 +25,9 @@ function convertMarkdown() {
 
   // Blockquotes
   markdown = markdown.replace(/^>\s?(.*)$/gm, "<blockquote>$1</blockquote>");
+
+  // Line breaks
+  markdown = markdown.replace(/\n/g, "<br>");
 
   return markdown;
 }
