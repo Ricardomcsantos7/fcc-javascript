@@ -18,36 +18,40 @@ No setup or installation is required — everything runs in the browser.
 
 ## Supported Markdown Syntax
 
-### <Headings>
+### Headings
 
 ```md
 # Heading 1
-
 ## Heading 2
-
 ### Heading 3
+```
 
-### <Bold Text>
-
+### Bold Text
+```md
 **bold text**
 **bold text**
+```
 
-### <Italic Text>
-
+### Italic Text
+```md
 _italic text_
 _italic text_
+```
 
-### <Links>
-
+### Links
+```md
 [link text](https://example.com)
+```
 
-### <Images>
-
+### Images
+```md
 ![alt text](image-source)
+```
 
-### <Blockquotes>
-
-"> This is a quote"
+### Blockquotes
+```md
+> This is a quote
+```
 
 ---
 
@@ -67,4 +71,3 @@ _italic text_
   - DOM manipulation
   - Event handling
 - Additional Markdown features can be added in the future.
-```
