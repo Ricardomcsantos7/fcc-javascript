@@ -11,6 +11,13 @@ function playSound(key) {
   audio.play();
 
   display.textContent = pad.id;
+
+  /* Visual feedback */
+  pad.classList.add("active");
+
+  setTimeout(() => {
+    pad.classList.remove("active");
+  }, 100);
 }
 
 /* Click */
