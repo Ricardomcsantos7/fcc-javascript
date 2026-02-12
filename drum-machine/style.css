@@ -65,3 +65,11 @@ body {
     height: 70px;
   }
 }
+
+#bank-toggle {
+  background: #444;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
