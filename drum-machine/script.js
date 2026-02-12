@@ -42,6 +42,7 @@ const soundBanks = {
 
 let currentBank = "heater";
 let powerOn = false;
+let darkMode = true;
 
 /* DOM Selectors */
 const display = document.getElementById("display");
@@ -49,6 +50,7 @@ const drumPads = document.querySelectorAll(".drum-pad");
 
 const powerBtn = document.getElementById("power-btn");
 const powerLed = document.getElementById("power-led");
+const themeBtn = document.getElementById("theme-btn");
 
 /* Main functionality */
 function playSound(key) {
@@ -86,7 +88,7 @@ document.addEventListener("keydown", (event) => {
   playSound(event.key.toUpperCase());
 });
 
-/* Toggle switchs */
+/* Power Toggle */
 powerBtn.addEventListener("click", () => {
   powerOn = !powerOn;
 
@@ -94,6 +96,16 @@ powerBtn.addEventListener("click", () => {
   powerLed.classList.toggle("on", powerOn);
 
   display.textContent = powerOn ? "Power On" : "Power Off";
+});
+
+/* Theme switch */
+themeBtn.addEventListener("click", () => {
+  darkMode = !darkMode;
+
+  themeBtn.classList.toggle("active");
+  document.body.classList.toggle("light-mode");
+
+  display.textContent = darkMode ? "Dark Mode" : "Light Mode";
 });
 
 /* Switch Bank */
