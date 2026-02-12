@@ -41,14 +41,19 @@ const soundBanks = {
 };
 
 let currentBank = "heater";
+let powerOn = false;
 
-/* Main functionality */
+/* DOM Selectors */
 const display = document.getElementById("display");
 const drumPads = document.querySelectorAll(".drum-pad");
 
+const powerBtn = document.getElementById("power-btn");
+const powerLed = document.getElementById("power-led");
+
+/* Main functionality */
 function playSound(key) {
   const audio = document.getElementById(key);
-  if (!audio) return;
+  if (!powerOn) return;
 
   const pad = audio.parentElement;
 
@@ -81,7 +86,17 @@ document.addEventListener("keydown", (event) => {
   playSound(event.key.toUpperCase());
 });
 
-/* Toggle switch */
+/* Toggle switchs */
+powerBtn.addEventListener("click", () => {
+  powerOn = !powerOn;
+
+  powerBtn.classList.toggle("active", powerOn);
+  powerLed.classList.toggle("on", powerOn);
+
+  display.textContent = powerOn ? "Power On" : "Power Off";
+});
+
+/* Switch Bank */
 const bankToggle = document.getElementById("bank-toggle");
 
 bankToggle.addEventListener("click", () => {

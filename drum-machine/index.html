@@ -14,9 +14,21 @@
   <body>
     <div id="drum-machine">
       <h1>Drum Machine</h1>
-      <p id="display">Ready</p>
+      <p id="display">Power off</p>
 
-      <!-- Toggle -->
+      <!-- Toggle switchs -->
+      <div class="controls">
+        <div class="power-control">
+          <div id="power-led" class="led"></div>
+          <span>Power</span>
+          <button id="power-btn" class="toggle"></button>
+        </div>
+
+        <div class="theme-control">
+          <span>Theme</span>
+          <button id="theme-btn" class="toggle"></button>
+        </div>
+      </div>
       <button id="bank-toggle">Switch Bank</button>
 
       <!-- Buttons -->

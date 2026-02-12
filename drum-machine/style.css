@@ -52,6 +52,75 @@ body {
   pointer-events: none;
 } */
 
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+}
+
+.power-control,
+.theme-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle {
+  width: 40px;
+  height: 20px;
+  background: #333;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+.toggle.active {
+  background: #3b8f3b;
+}
+
+.toggle.active::after {
+  transform: translateX(20px);
+}
+
+.led {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #400;
+  box-shadow: 0 0 5px #400;
+  transition: all 0.3s;
+}
+
+.led.on {
+  background: #ff0000;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+#bank-toggle {
+  background: #444;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 #pad-bank {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -90,12 +159,4 @@ body {
   .drum-pad {
     height: 70px;
   }
-}
-
-#bank-toggle {
-  background: #444;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
 }
