@@ -38,10 +38,51 @@ const soundBanks = {
       src: "https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3",
     },
   },
+
+  percussion: {
+    Q: {
+      name: "Shaker",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/Give_us_a_light.mp3",
+    },
+    W: {
+      name: "Snare Soft",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/Dry_Ohh.mp3",
+    },
+    E: {
+      name: "Hi Hat Alt",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/Bld_H1.mp3",
+    },
+    A: {
+      name: "Tom Low",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/side_stick_1.mp3",
+    },
+    S: {
+      name: "Tom Mid",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/punchy_kick_1.mp3",
+    },
+    D: {
+      name: "Ride",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/Chord_1.mp3",
+    },
+    Z: {
+      name: "808 Kick",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/Brk_Snr.mp3",
+    },
+    X: {
+      name: "Snare Alt",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3",
+    },
+    C: {
+      name: "Clap Alt",
+      src: "https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3",
+    },
+  },
 };
 
+/* Global variables */
 let currentBank = "heater";
 let powerOn = false;
+let booting = false;
 let darkMode = true;
 
 /* DOM Selectors */
@@ -51,11 +92,12 @@ const drumPads = document.querySelectorAll(".drum-pad");
 const powerBtn = document.getElementById("power-btn");
 const powerLed = document.getElementById("power-led");
 const themeBtn = document.getElementById("theme-btn");
+const bankToggle = document.getElementById("bank-toggle");
 
 /* Main functionality */
 function playSound(key) {
   const audio = document.getElementById(key);
-  if (!powerOn) return;
+  if (!powerOn || booting) return;
 
   const pad = audio.parentElement;
 
@@ -90,12 +132,44 @@ document.addEventListener("keydown", (event) => {
 
 /* Power Toggle */
 powerBtn.addEventListener("click", () => {
-  powerOn = !powerOn;
+  if (powerOn || booting) {
+    // Turn OFF immediately
+    powerOn = false;
+    booting = false;
 
-  powerBtn.classList.toggle("active", powerOn);
-  powerLed.classList.toggle("on", powerOn);
+    powerBtn.classList.remove("active");
+    powerLed.classList.remove("on", "booting");
+    document.getElementById("drum-machine").classList.remove("on", "booting");
 
-  display.textContent = powerOn ? "Power On" : "Power Off";
+    // Reset bank to default
+    currentBank = "heater";
+    bankToggle.classList.remove("active");
+
+    display.textContent = "Power Off";
+    return;
+  }
+
+  // Boot Sequence
+  booting = true;
+
+  powerBtn.classList.add("active");
+  powerLed.classList.add("booting");
+  document.getElementById("drum-machine").classList.add("booting");
+
+  display.textContent = "Booting...";
+
+  setTimeout(() => {
+    booting = false;
+    powerOn = true;
+
+    powerLed.classList.remove("booting");
+    powerLed.classList.add("on");
+
+    document.getElementById("drum-machine").classList.remove("booting");
+    document.getElementById("drum-machine").classList.add("on");
+
+    display.textContent = "Power On";
+  }, 1500); // boot duration
 });
 
 /* Theme switch */
@@ -109,9 +183,13 @@ themeBtn.addEventListener("click", () => {
 });
 
 /* Switch Bank */
-const bankToggle = document.getElementById("bank-toggle");
-
 bankToggle.addEventListener("click", () => {
-  currentBank = currentBank === "heater" ? "heater" : "heater";
-  display.textContent = "Heater Bank";
+  if (!powerOn || booting) return;
+
+  currentBank = currentBank === "heater" ? "percussion" : "heater";
+
+  bankToggle.classList.toggle("active");
+
+  display.textContent =
+    currentBank === "heater" ? "Heater Bank" : "Percussion Bank";
 });

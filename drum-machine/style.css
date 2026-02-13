@@ -16,6 +16,21 @@ body {
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+
+  opacity: 0.7;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+#drum-machine.on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#drum-machine.booting {
+  opacity: 0.85;
+  transform: scale(0.98);
 }
 
 #display {
@@ -113,12 +128,32 @@ body {
   box-shadow: 0 0 10px #ff0000;
 }
 
+@keyframes boot-blink {
+  0%,
+  100% {
+    background: #400;
+    box-shadow: 0 0 5px #400;
+  }
+  50% {
+    background: #ff0000;
+    box-shadow: 0 0 15px #ff0000;
+  }
+}
+
+.led.booting {
+  animation: boot-blink 0.3s ease-in-out 4;
+}
+
 #bank-toggle {
   background: #444;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
+}
+
+#bank-toggle.active {
+  background: #2196f3;
 }
 
 #pad-bank {
@@ -170,6 +205,10 @@ body.light-mode #display {
 body.light-mode #bank-toggle {
   background: #aaa;
   color: #1e1e1e;
+}
+
+body.light-mode #bank-toggle.active {
+  background: #2196f3;
 }
 
 body.light-mode .drum-pad {
