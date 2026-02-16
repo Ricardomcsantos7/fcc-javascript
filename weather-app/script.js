@@ -31,7 +31,7 @@ async function showWeather(city) {
   }
 
   // Show container
-  weatherContainer.style.display = "block";
+  weatherContainer.classList.remove("hidden");
 
   // Safely assign values or N/A
   document.getElementById("location").textContent = data.name || "N/A";

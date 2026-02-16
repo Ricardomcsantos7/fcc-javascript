@@ -4,35 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Weather App</h1>
+    <div class="app">
+      <h1 class="title">Weather Now</h1>
 
-    <!-- City Selector -->
-    <select id="city-select">
-      <option value=""></option>
-      <option value="new york">New York</option>
-      <option value="los angeles">Los Angeles</option>
-      <option value="chicago">Chicago</option>
-      <option value="paris">Paris</option>
-      <option value="tokyo">Tokyo</option>
-      <option value="london">London</option>
-    </select>
+      <!-- City Selector -->
+      <div class="controls">
+        <select id="city-select">
+          <option value=""></option>
+          <option value="new york">New York</option>
+          <option value="los angeles">Los Angeles</option>
+          <option value="chicago">Chicago</option>
+          <option value="paris">Paris</option>
+          <option value="tokyo">Tokyo</option>
+          <option value="london">London</option>
+        </select>
 
-    <!-- Required Button -->
-    <button id="get-weather-btn">Get Weather</button>
+        <!-- Button -->
+        <button id="get-weather-btn">Get Weather</button>
+      </div>
 
-    <!-- Weather Display Section -->
-    <div id="weather-container" style="display: none">
-      <h2 id="location"></h2>
-      <p id="weather-main"></p>
-      <img id="weather-icon" alt="Weather Icon" />
+      <!-- Weather Display Section -->
+      <div id="weather-container" class="weather-card hidden">
+        <h2 id="location"></h2>
+        <p id="weather-main" class="weather-type"></p>
 
-      <p>Main Temp: <span id="main-temperature"></span></p>
-      <p>Feels Like: <span id="feels-like"></span></p>
-      <p>Humidity: <span id="humidity"></span></p>
-      <p>Wind Speed: <span id="wind"></span></p>
-      <p>Wind Gust: <span id="wind-gust"></span></p>
+        <img id="weather-icon" alt="Weather Icon" />
+
+        <div class="temperature">
+          <p>Main Temp: <span id="main-temperature"></span></p>
+        </div>
+
+        <div class="details">
+          <p>Feels Like: <span id="feels-like"></span></p>
+          <p>Humidity: <span id="humidity"></span></p>
+          <p>Wind Speed: <span id="wind"></span></p>
+          <p>Wind Gust: <span id="wind-gust"></span></p>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
