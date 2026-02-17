@@ -24,11 +24,31 @@ async function getWeather(city) {
   }
 }
 
+/* Temperature Count-Up */
+function animateTemperature(element, finalValue) {
+  let start = 0;
+  const duration = 800;
+  const increment = finalValue / (duration / 16);
+
+  const counter = setInterval(() => {
+    start += increment;
+
+    if (start >= finalValue) {
+      element.textContent = finalValue.toFixed(1);
+      clearInterval(counter);
+    } else {
+      element.textContent = start.toFixed(1);
+    }
+  }, 16);
+}
+
 /* async showWeather function */
 async function showWeather(city) {
   // Reset UI state
   errorMessage.classList.add("hidden");
   weatherContainer.classList.add("hidden");
+
+  weatherContainer.className = "weather-card hidden";
 
   // Show loading
   loading.classList.remove("hidden");
@@ -46,6 +66,16 @@ async function showWeather(city) {
     return;
   }
 
+  const weatherType = data.weather?.[0]?.main?.toLowerCase();
+
+  weatherContainer.className = "weather-card"; // reset base class
+
+  if (weatherType) {
+    weatherContainer.classList.add(weatherType);
+  } else {
+    weatherContainer.classList.add("default");
+  }
+
   // Show card
   weatherContainer.classList.remove("hidden");
 
@@ -55,8 +85,14 @@ async function showWeather(city) {
 
   document.getElementById("weather-icon").src = data.weather?.[0]?.icon || "";
 
-  document.getElementById("main-temperature").textContent =
-    data.main?.temp ?? "N/A";
+  // Temperature Count-Up
+  const tempElement = document.getElementById("main-temperature");
+
+  if (typeof data.main?.temp === "number") {
+    animateTemperature(tempElement, data.main.temp);
+  } else {
+    tempElement.textContent = "N/A";
+  }
 
   document.getElementById("feels-like").textContent =
     data.main?.feels_like ?? "N/A";
